@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Power Learn Project Africa</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <h1>Power Learn Project Africa</h1>
+            <div class="controls">
+                <button id="theme-toggle" aria-pressed="false">Switch to Dark Mode</button>
+                <button id="reset-btn">Reset Counter</button>
+            </div>
+        </header>
+        <main>
+            <section id="counter-section">
+                <h2>Counter</h2>
+                <p>Click the buttons to change the score. Try to get the score to 10!</p>
+                <div class="counter-controls">
+                    <button id="decrease">-</button>
+                    <span id="count">0</span>
+                    <button id="increase">+</button>
+                </div>
+                <p id="counter-message" class="muted"></p>
+            </section>
+
+            <section id="faq-section">
+                <h2>Frequently Asked Questions (collapsible)</h2>
+                <div class="faq">
+                    <button class="faq-toggle">What is the Power Learn Project Africa?</button>
+                    <div class="faq-panel">The Power Learn Project Africa is an initiative aimed at empowering learners across Africa through technology and education.</div>
+
+                    <button class="faq-toggle">How can I get involved?</button>
+                    <div class="faq-panel">You can get involved by volunteering, donating, or participating in our programs. Visit our website for more details.</div>
+
+                    <button class="faq-toggle">What resources are available for learners?</button>
+                    <div class="faq-panel">We offer a variety of resources including online courses, mentorship programs, and access to educational materials tailored for African learners.</div>
+                </div>
+            </section>
+
+            <section id="form-section" class="card">
+                <h2>signup Form (Custom Validation)</h2>
+                <form id="signup-form" novalidate>
+                    <label>
+                        Full name
+                        <input type="text" name="fullName" id="fullName" required />
+                    </label>
+
+                    <label>
+                        Email
+                        <input type="email" name="email" id="email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required />
+                    </label>
+                    <div class="error" id="email-error"></div>
+
+                    <label>
+                        Password
+                        <input type="password" name="password" id="password" pattern=".{8,}" required />
+                    </label>
+                    <div class="error" id="password-error"></div>
+                    <label>
+                        Confirm Password
+                        <input type="password" name="confirmPassword" id="confirmPassword" required />
+                    </label>
+                    <div class="error" id="confirm-password-error"></div>
+
+                    <button type="submit" id="submit-btn">Sign Up</button>
+                    <div id="form-success" class="success" role="status"></div>
+                </form>
+            </section>
+
+        </main>
+        <footer class="site-footer">
+            <p>&copy; 2025 Power Learn Project Africa</p>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
