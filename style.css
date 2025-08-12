@@ -1,108 +1,125 @@
 :root {
-    --bg: #ffffff;
-    --text: #222;
-    --card: #f7f7f7;
-    --accent: #2b8cf7;
-    --muted: #666;
+  --bg: #f7f7fb; 
+  --card:#fff; 
+  --text:#111; 
+  --muted:#555; 
+  --accent:#2b6df6;
 }
 
-[data-theme="dark"] {
-    --bg: #0f1720;
-    --text: #e6eef8;
-    --card: #101820;
-    --accent: #6fb8ff;
-    --muted: #a8b3c0;
+[data-theme="dark"] { 
+    --bg:#0b1220; 
+    --card:#0f1724; 
+    --text:#e6eef8; 
+    --muted:#a9b6cc; 
+    --accent:#5aa0ff;
 }
 
-* { box-sizing: border-box; }
-body {
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    line-height: 1.4;
-    padding: 1rem;
+* { box-sizing:border-box }
+body { 
+    margin:0; 
+    font-family:Inter,system-ui,Segoe UI,Arial; 
+    background:var(--bg); 
+    color:var(--text); 
+    padding:24px;
 }
 
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem 0;
+.container { 
+    max-width:900px; 
+    margin:0 auto; 
+    display:grid; 
+    gap:20px;
 }
 
-.controls button {
-    margin-left: 0.5rem;
+header { 
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between;
 }
 
-.card {
-    background: var(--card);
-    border-radius: 8px;
-    padding: 1rem;
-    margin: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+h1 { 
+    font-size:1.4rem; 
+    margin:0;
 }
 
-.counter-controls {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+.card { 
+    background:var(--card); 
+    padding:16px; 
+    border-radius:12px; 
+    box-shadow:0 6px 18px rgba(2,6,23,0.08); 
 }
 
-#counter {
-    min-width: 2rem;
-    font-weight: 700;
-    text-align: center;
-    display: inline-block;
+.controls { 
+    display:flex; 
+    gap:8px; 
+    align-items:center; 
 }
 
-.faq .faq-panel {
-    padding: 0.5rem 0;
-    display: none;
-    border-left: 3px solid var(--accent);
-    background: rgba(0, 0, 0, 0.02);
-    margin-bottom: 0.75rem;
+.counter { 
+    display:flex; 
+    gap:8px; 
+    align-items:center;
 }
 
-.faq .faq-toggle[aria-expanded="true"] + .faq-panel {
-    display: block;
-}   
-
-label { display: block; margin-bottom: 0.5rem; }
-label input[type="text"],
-label input[type="email"],
-label input[type="password"] {
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 4px;
-    padding: 0.5rem;
-    width: 100%;
-    background: white;
-    display: block;
-    margin-top: .025rem;
+.btn { 
+    padding:8px 12px; 
+    border-radius:8px; 
+    border:0; cursor:pointer; 
+    background:var(--accent); 
+    color:white;
 }
 
-[data-theme="dark"] label input[type="text"],
-[data-theme="dark"] label input[type="email"],
-[data-theme="dark"] label input[type="password"] {
-    background: #0c1220;
-    color: var(--text);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+.tabs { 
+    display:flex; 
+    border-bottom:1px solid #eee;
 }
 
-.error { color: #d9534f; font-size: 0.9rem; min-height: 1.1rem; }
-.success { color: #2a9d8f; margin-top: 0.5rem; min-height: 1.2rem; }
-
-.checkbox { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
-
-button[type="submit"] {
-    background: var(--accent);
-    margin-top: 0.75rem;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
+.tab { 
+    padding:10px 14px; 
+    cursor:pointer;
 }
 
-.muted { color: var(--muted); }
+.tab.active { 
+    border-bottom:3px solid var(--accent); 
+    font-weight:600;
+}
+
+.faq-item { 
+    border-top:1px dashed #ddd; 
+    padding:10px 0;
+}
+
+.faq-q { 
+    cursor:pointer;
+}
+
+form { 
+    display:grid; 
+    gap:10px;
+}
+
+label { 
+    display:block; 
+    font-size:0.9rem; 
+    color:var(--muted);
+}
+
+input { 
+    padding:10px; 
+    border-radius:8px; 
+    border:1px solid #ddd;
+}
+
+.errors { 
+    color:#c62828; 
+    font-size:0.9rem;
+}
+
+.success { 
+    color:#2e7d32;
+}
+
+footer { 
+    font-size:0.85rem; 
+    color:var(--muted);
+    text-align:center;
+}

@@ -1,80 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Power Learn Project Africa</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <header class="site-header">
-            <h1>Power Learn Project Africa</h1>
-            <div class="controls">
-                <button id="theme-toggle" aria-pressed="false">Switch to Dark Mode</button>
-                <button id="reset-btn">Reset Counter</button>
-            </div>
-        </header>
-        <main>
-            <section id="counter-section">
-                <h2>Counter</h2>
-                <p>Click the buttons to change the score. Try to get the score to 10!</p>
-                <div class="counter-controls">
-                    <button id="decrease">-</button>
-                    <span id="count">0</span>
-                    <button id="increase">+</button>
-                </div>
-                <p id="counter-message" class="muted"></p>
-            </section>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Power Learn Project Africa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="app">
+    <header class="card">
+      <h1>Power Learn Project Africa</h1>
+      <div class="controls">
+        <div class="counter" aria-live="polite">
+          <button id="dec" class="btn">-</button>
+          <div id="count" style="min-width:40px;text-align:center">0</div>
+          <button id="inc" class="btn">+</button>
+        </div>
+        <button id="themeToggle" class="btn" title="Toggle light/dark">Toggle Theme</button>
+      </div>
+    </header>
 
-            <section id="faq-section">
-                <h2>Frequently Asked Questions (collapsible)</h2>
-                <div class="faq">
-                    <button class="faq-toggle">What is the Power Learn Project Africa?</button>
-                    <div class="faq-panel">The Power Learn Project Africa is an initiative aimed at empowering learners across Africa through technology and education.</div>
+    <section class="card">
+      <div class="tabs" role="tablist">
+        <div class="tab active" data-tab="home">Home</div>
+        <div class="tab" data-tab="features">Features</div>
+        <div class="tab" data-tab="faq">FAQ</div>
+      </div>
+      <div id="tabContent" style="padding-top:12px">
+        <div data-panel="home">
+          <p>Welcome — try the counter, toggle theme, or open the FAQ. Type in the form to see live validation.</p>
+        </div>
+        <div data-panel="features" hidden>
+          <ul>
+            <li>Light / Dark theme toggle (persisted to localStorage)</li>
+            <li>Counter with keyboard support (ArrowUp / ArrowDown)</li>
+            <li>Custom form validation (email, password rules, matching)</li>
+          </ul>
+        </div>
+        <div data-panel="faq" hidden>
+          <div class="faq-item">
+            <div class="faq-q">What does the theme toggle do?</div>
+            <div class="faq-a" hidden>The toggle switches page colors and saves your preference.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How does the form validation work?</div>
+            <div class="faq-a" hidden>JavaScript checks fields against rules and shows inline error messages.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                    <button class="faq-toggle">How can I get involved?</button>
-                    <div class="faq-panel">You can get involved by volunteering, donating, or participating in our programs. Visit our website for more details.</div>
+    <section class="card">
+      <h3>Sign up (custom validation)</h3>
+      <form id="signup" novalidate>
+        <div>
+          <label for="name">Full name</label>
+          <input id="name" name="name" required placeholder="Full name" />
+          <div class="errors" data-error-for="name"></div>
+        </div>
 
-                    <button class="faq-toggle">What resources are available for learners?</button>
-                    <div class="faq-panel">We offer a variety of resources including online courses, mentorship programs, and access to educational materials tailored for African learners.</div>
-                </div>
-            </section>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="email@example.com" />
+          <div class="errors" data-error-for="email"></div>
+        </div>
 
-            <section id="form-section" class="card">
-                <h2>signup Form (Custom Validation)</h2>
-                <form id="signup-form" novalidate>
-                    <label>
-                        Full name
-                        <input type="text" name="fullName" id="fullName" required />
-                    </label>
+        <div>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="At least 8 chars, letters + number" />
+          <div class="errors" data-error-for="password"></div>
+        </div>
 
-                    <label>
-                        Email
-                        <input type="email" name="email" id="email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required />
-                    </label>
-                    <div class="error" id="email-error"></div>
+        <div>
+          <label for="confirm">Confirm password</label>
+          <input id="confirm" name="confirm" type="password" />
+          <div class="errors" data-error-for="confirm"></div>
+        </div>
 
-                    <label>
-                        Password
-                        <input type="password" name="password" id="password" pattern=".{8,}" required />
-                    </label>
-                    <div class="error" id="password-error"></div>
-                    <label>
-                        Confirm Password
-                        <input type="password" name="confirmPassword" id="confirmPassword" required />
-                    </label>
-                    <div class="error" id="confirm-password-error"></div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button type="submit" class="btn">Submit</button>
+          <div id="formFeedback" aria-live="polite"></div>
+        </div>
+      </form>
+    </section>
 
-                    <button type="submit" id="submit-btn">Sign Up</button>
-                    <div id="form-success" class="success" role="status"></div>
-                </form>
-            </section>
+    <footer class="card"> 2025 &copy; Power Learn Project Africa</footer>
+  </div>
 
-        </main>
-        <footer class="site-footer">
-            <p>&copy; 2025 Power Learn Project Africa</p>
-        </footer>
-
-        <script src="script.js"></script>
-    </body>
+  <script src="script.js"></script>
+</body>
 </html>
